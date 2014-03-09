@@ -14,6 +14,7 @@ import warnings
 import tempfile
 import urllib, urllib2
 import requests
+import importlib
 
 def scrape(url, params = None, user_agent = None) :
     '''
@@ -73,6 +74,8 @@ def status(type, message=None):
     r.raise_for_status()
     return r.content
 
-
-
+def swimport(name):
+    if name == "postliste-python-lib":
+        name = "postlistepythonlib"
+    return importlib.import_module("swlibs.%s" % (name))
 
